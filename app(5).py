@@ -171,6 +171,11 @@ hr {
     border-color: #DCE4ED !important;
 }
 
+
+div[data-testid="stTabs"] button[role="tab"] {
+    font-weight: 700 !important;
+}
+
 </style>
 """,
 unsafe_allow_html=True
@@ -251,16 +256,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab_sepsis, tab_cohort = st.tabs([
+tab_sepsis, tab_cohort, tab_developers = st.tabs([
     "Definition of sepsis",
-    "Introduction to the model development cohort"
+    "Introduction to the model development cohort",
+    "Introduction of the main developers"
 ])
 
 with tab_sepsis:
     st.markdown(
         """
         **Sepsis** is a life-threatening condition characterized by
-        organ dysfunction resulting from a dysregulated host response to infection(According to
+        organ dysfunction resulting from a dysregulated host response to infection (according to
         Surviving Sepsis Campaign International Guidelines for the Management of Sepsis and Septic Shock in Children 2026. Pediatr Crit Care Med.).
 
         For CMU-iPedSep, sepsis status is determined according to the
@@ -275,17 +281,40 @@ with tab_cohort:
         **Development cohort**
 
         The model was developed using a retrospective cohort of **25,426
-        children admitted with acute infection** to the National Clinical
+        children admitted with acute infection** to the Children's Hospital of Chongqing Medical University, National Clinical
         Research Center for Children and Adolescents' Health and Diseases
         in China between **2012 and 2025**.
 
-        - **Sepsis:** 2,788 children (11.0%)(8.0 [3.0-24.0] months; 1763 [63.2%] male)
-        - **Infection only:** 22,638 children (89.0%)(11.0 [5.0-31.0] months; 14,036 [62.0%] male) 
+        - **Sepsis:** 2,788 (11.0%) children progressed to sepsis(8.0 [3.0-24.0] months; 1763 [63.2%] male)
+        - **Infection only:** 22,638 (89.0%) children remained non-septic (11.0 [5.0-31.0] months; 14,036 [62.0%] male)
 
         Ten candidate machine-learning algorithms were compared, and
         **XGBoost** was selected for the final model. CMU-iPedSep uses
         routinely available admission indicators to estimate the risk
         of sepsis in children admitted for acute infection.
+        """
+    )
+
+with tab_developers:
+    st.markdown(
+        """
+        **Haifeng Liu, MD, PhD**  
+        Postdoctoral Fellow at the National Clinical Research Center for Children and Adolescents' Health and Diseases
+        and Children's Hospital of Chongqing Medical University. His research focuses on severe pediatric infections
+        and artificial intelligence-based clinical models.
+
+        **Yushun Wan, PhD**  
+        Professor and doctoral supervisor at the College of Basic Medicine, Chongqing Medical University.
+        His research focuses on respiratory viral infection and transmission, and the development of antiviral vaccines and drugs.
+
+        **Enmei Liu, MD, PhD**  
+        Vice President of Chongqing Medical University and Chief Scientist of the National Key Research and Development Program of China.
+        Her research focuses on the molecular epidemiology, early-warning models, and pathogenesis of respiratory viruses in children.
+
+        **Na Zang, MD, PhD**  
+        Chief Physician and Professor at the National Clinical Research Center for Children and Adolescents' Health and Diseases
+        and Children's Hospital of Chongqing Medical University. Her research focuses on severe respiratory viral infections,
+        chronic cough, and allergic diseases.
         """
     )
 
