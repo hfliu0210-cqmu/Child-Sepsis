@@ -61,6 +61,45 @@ st.markdown(
 }
 
 
+/* CMU-iPedSep introduction area */
+.model-intro {
+    background: #EEF3F8;
+    border-left: 5px solid #B22222;
+    padding: 12px 16px;
+    margin: 18px 0 16px 0;
+    border-radius: 4px;
+    color: #A61B1B;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+/* Introduction tabs */
+div[data-testid="stTabs"] div[role="tablist"] {
+    gap: 12px;
+    border-bottom: 1px solid #D8E2EC;
+}
+div[data-testid="stTabs"] button[role="tab"] {
+    background: #EAF0F6;
+    color: #31536F;
+    border: 1px solid #D7E2EC;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 18px;
+    font-size: 17px;
+    font-weight: 600;
+}
+div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+    background: #164A7B;
+    color: #FFFFFF;
+    border-color: #164A7B;
+}
+div[data-testid="stTabs"] div[role="tabpanel"] {
+    background: #F7F9FC;
+    border: 1px solid #E1E8EF;
+    border-top: 3px solid #164A7B;
+    border-radius: 0 0 6px 6px;
+    padding: 18px 20px;
+}
+
 .result-number {
 
     font-family:"Times New Roman";
@@ -149,6 +188,56 @@ else:
     )
 
 
+
+# =====================================================
+# Model purpose and information modules
+# =====================================================
+
+st.markdown(
+    """
+    <div class="model-intro">
+        This model aims to predict sepsis risk in children admitted for acute infection.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+tab_sepsis, tab_cohort = st.tabs([
+    "Definition of sepsis",
+    "Introduction to the model development cohort"
+])
+
+with tab_sepsis:
+    st.markdown(
+        """
+        **Sepsis** is a life-threatening condition characterized by
+        organ dysfunction resulting from a dysregulated host response to infection.
+
+        For CMU-iPedSep, sepsis status is determined according to the
+        operational definition and outcome-labeling criteria used in the
+        original model development cohort.
+        """
+    )
+
+with tab_cohort:
+    st.markdown(
+        """
+        **Development cohort**
+
+        The model was developed using a retrospective cohort of **25,426
+        children admitted with acute infection** to the National Clinical
+        Research Center for Children and Adolescents' Health and Diseases
+        in China between **2012 and 2025**.
+
+        - **Sepsis:** 2,788 children (11.0%)
+        - **Infection only:** 22,638 children (89.0%)
+
+        Ten candidate machine-learning algorithms were compared, and
+        **XGBoost** was selected for the final model. CMU-iPedSep uses
+        routinely available admission indicators to estimate the risk
+        of sepsis in children admitted for acute infection.
+        """
+    )
 
 st.divider()
 
