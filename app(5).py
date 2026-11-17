@@ -122,6 +122,55 @@ body {
 }
 
 
+
+/* Overall scientific website background */
+html, body, [data-testid="stAppViewContainer"] {
+    background: #F3F6FA !important;
+    color: #243447;
+}
+
+/* Main application canvas */
+[data-testid="stAppViewContainer"] > .main {
+    background: #F3F6FA !important;
+}
+[data-testid="stMain"] {
+    background: #F3F6FA !important;
+}
+.block-container {
+    background: transparent;
+    padding-top: 1.6rem;
+    padding-bottom: 2.2rem;
+    max-width: 1500px;
+}
+
+/* Header and toolbar blend into the page */
+[data-testid="stHeader"] {
+    background: rgba(243, 246, 250, 0.96) !important;
+}
+
+/* Input widgets retain a clean white clinical interface */
+[data-testid="stNumberInput"],
+[data-testid="stSelectbox"] {
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+/* Subtle separation for the two main prediction panels */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    border-color: #E1E8F0;
+}
+
+/* Tabs and information panels use the same cool scientific palette */
+div[data-testid="stTabs"] div[role="tabpanel"] {
+    background: #FFFFFF !important;
+    border-color: #DCE5EF !important;
+}
+
+/* Dividers are intentionally understated */
+hr {
+    border-color: #DCE4ED !important;
+}
+
 </style>
 """,
 unsafe_allow_html=True
@@ -211,7 +260,8 @@ with tab_sepsis:
     st.markdown(
         """
         **Sepsis** is a life-threatening condition characterized by
-        organ dysfunction resulting from a dysregulated host response to infection.
+        organ dysfunction resulting from a dysregulated host response to infection(According to
+        Surviving Sepsis Campaign International Guidelines for the Management of Sepsis and Septic Shock in Children 2026. Pediatr Crit Care Med.).
 
         For CMU-iPedSep, sepsis status is determined according to the
         operational definition and outcome-labeling criteria used in the
@@ -229,8 +279,8 @@ with tab_cohort:
         Research Center for Children and Adolescents' Health and Diseases
         in China between **2012 and 2025**.
 
-        - **Sepsis:** 2,788 children (11.0%)
-        - **Infection only:** 22,638 children (89.0%)
+        - **Sepsis:** 2,788 children (11.0%)(8.0 [3.0-24.0] months; 1763 [63.2%] male)
+        - **Infection only:** 22,638 children (89.0%)(11.0 [5.0-31.0] months; 14,036 [62.0%] male) 
 
         Ten candidate machine-learning algorithms were compared, and
         **XGBoost** was selected for the final model. CMU-iPedSep uses
