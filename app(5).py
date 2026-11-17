@@ -172,7 +172,11 @@ hr {
 }
 
 
-div[data-testid="stTabs"] button[role="tab"] {
+/* Ensure all three Streamlit tab titles are visibly bold */
+div[data-testid="stTabs"] button[role="tab"],
+div[data-testid="stTabs"] button[role="tab"] *,
+div[data-testid="stTabs"] button[role="tab"] p,
+div[data-testid="stTabs"] button[role="tab"] span {
     font-weight: 700 !important;
 }
 
