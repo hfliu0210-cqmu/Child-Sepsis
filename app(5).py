@@ -77,20 +77,28 @@ st.markdown(
 div[data-testid="stTabs"] div[role="tablist"] {
     gap: 12px;
     border-bottom: 1px solid #D8E2EC;
+    align-items: stretch;
 }
 div[data-testid="stTabs"] button[role="tab"] {
-    background: #EAF0F6;
-    color: #31536F;
-    border: 1px solid #D7E2EC;
-    border-radius: 5px 5px 0 0;
-    padding: 10px 18px;
+    background: #E7EEF6 !important;
+    color: #31536F !important;
+    border: 1px solid #D7E2EC !important;
+    border-radius: 7px 7px 0 0 !important;
+    padding: 11px 18px !important;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700 !important;
+    box-shadow: 0 1px 3px rgba(35, 65, 95, 0.06);
+}
+div[data-testid="stTabs"] button[role="tab"] *,
+div[data-testid="stTabs"] button[role="tab"] p,
+div[data-testid="stTabs"] button[role="tab"] span {
+    font-weight: 700 !important;
 }
 div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-    background: #164A7B;
-    color: #FFFFFF;
-    border-color: #164A7B;
+    background: #DCE8F4 !important;
+    color: #164A7B !important;
+    border-color: #B9CCDF !important;
+    box-shadow: inset 0 -3px 0 #164A7B;
 }
 div[data-testid="stTabs"] div[role="tabpanel"] {
     background: #F7F9FC;
