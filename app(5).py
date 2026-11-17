@@ -209,6 +209,21 @@ div[data-testid="stTabs"] button[role="tab"] span {
     font-weight: 700 !important;
 }
 
+
+        /* Developer profile layout */
+        .developer-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #223A57;
+            margin-bottom: 6px;
+        }
+        .developer-bio {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #31445F;
+            margin-bottom: 4px;
+        }
+
 </style>
 """,
 unsafe_allow_html=True
@@ -328,28 +343,43 @@ with tab_cohort:
         """
     )
 
+
 with tab_developers:
-    st.markdown(
-        """
-        **Haifeng Liu, MD, PhD**  
-        Postdoctoral Fellow at the National Clinical Research Center for Children and Adolescents' Health and Diseases
-        and Children's Hospital of Chongqing Medical University. His research focuses on severe pediatric infections
-        and artificial intelligence-based clinical models.
+    developers = [
+        {
+            "name": "Hai-Feng Liu, MD, PhD",
+            "photo": "haifeng_liu.jpg",
+            "bio": "Postdoctoral Fellow at the National Clinical Research Center for Children and Adolescents' Health and Diseases and Children's Hospital of Chongqing Medical University. His research focuses on severe pediatric infections and artificial intelligence-based clinical models."
+        },
+        {
+            "name": "Yushun Wan, PhD",
+            "photo": "yushun_wan.png",
+            "bio": "Professor and doctoral supervisor at the College of Basic Medicine, Chongqing Medical University. His research focuses on respiratory viral infection and transmission, and the development of antiviral vaccines and drugs."
+        },
+        {
+            "name": "Enmei Liu, MD, PhD",
+            "photo": "enmei_liu.png",
+            "bio": "Vice President of Chongqing Medical University and Chief Scientist of the National Key Research and Development Program of China. Her research focuses on respiratory virus molecular epidemiology, early-warning models, and pathogenesis in children."
+        },
+        {
+            "name": "Na Zang, MD, PhD",
+            "photo": "na_zang.png",
+            "bio": "Chief Physician and Professor at the National Clinical Research Center for Children and Adolescents' Health and Diseases and Children's Hospital of Chongqing Medical University. Her research focuses on severe respiratory viral infections in children, chronic cough, and allergic diseases."
+        }
+    ]
 
-        **Yushun Wan, PhD**  
-        Professor and doctoral supervisor at the College of Basic Medicine, Chongqing Medical University.
-        His research focuses on respiratory viral infection and transmission, and the development of antiviral vaccines and drugs.
-
-        **Enmei Liu, MD, PhD**  
-        Vice President of Chongqing Medical University and Chief Scientist of the National Key Research and Development Program of China.
-        Her research focuses on the molecular epidemiology, early-warning models, and pathogenesis of respiratory viruses in children.
-
-        **Na Zang, MD, PhD**  
-        Chief Physician and Professor at the National Clinical Research Center for Children and Adolescents' Health and Diseases
-        and Children's Hospital of Chongqing Medical University. Her research focuses on severe respiratory viral infections,
-        chronic cough, and allergic diseases.
-        """
-    )
+    for idx, dev in enumerate(developers):
+        col_photo, col_text = st.columns([1, 5], gap="medium")
+        with col_photo:
+            if os.path.exists(dev["photo"]):
+                st.image(dev["photo"], width=130)
+            else:
+                st.info("Photo not found")
+        with col_text:
+            st.markdown(f'<div class="developer-name">{dev["name"]}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="developer-bio">{dev["bio"]}</div>', unsafe_allow_html=True)
+        if idx < len(developers) - 1:
+            st.markdown("<div style=\"height:14px\"></div>", unsafe_allow_html=True)
 
 st.divider()
 
