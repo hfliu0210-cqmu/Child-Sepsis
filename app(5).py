@@ -74,32 +74,53 @@ st.markdown(
 }
 
 /* Introduction tabs */
-div[data-testid="stTabs"] div[role="tablist"] {
-    gap: 12px;
-    border-bottom: 1px solid #D8E2EC;
-    align-items: stretch;
+/* Tab list layout */
+div[data-testid="stTabs"] [role="tablist"],
+div[data-testid="stTabs"] [data-baseweb="tab-list"] {
+    display: flex !important;
+    gap: 10px !important;
+    border-bottom: 1px solid #D8E2EC !important;
+    background: transparent !important;
+    align-items: stretch !important;
 }
-div[data-testid="stTabs"] button[role="tab"] {
+
+/* Tab title cards: support both Streamlit and BaseWeb DOM variants */
+div[data-testid="stTabs"] [role="tab"],
+div[data-testid="stTabs"] button[data-baseweb="tab"],
+div[data-testid="stTabs"] [data-baseweb="tab"] {
     background: #E7EEF6 !important;
+    background-color: #E7EEF6 !important;
     color: #31536F !important;
     border: 1px solid #D7E2EC !important;
-    border-radius: 7px 7px 0 0 !important;
+    border-bottom: 1px solid #D7E2EC !important;
+    border-radius: 8px 8px 0 0 !important;
     padding: 11px 18px !important;
-    font-size: 17px;
+    margin: 0 !important;
+    font-size: 17px !important;
     font-weight: 700 !important;
-    box-shadow: 0 1px 3px rgba(35, 65, 95, 0.06);
+    box-shadow: 0 1px 3px rgba(35, 65, 95, 0.08) !important;
 }
-div[data-testid="stTabs"] button[role="tab"] *,
-div[data-testid="stTabs"] button[role="tab"] p,
-div[data-testid="stTabs"] button[role="tab"] span {
+
+/* Force bold text inside tab buttons */
+div[data-testid="stTabs"] [role="tab"] *,
+div[data-testid="stTabs"] button[data-baseweb="tab"] *,
+div[data-testid="stTabs"] [data-baseweb="tab"] * {
+    color: inherit !important;
     font-weight: 700 !important;
 }
-div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+
+/* Selected tab */
+div[data-testid="stTabs"] [role="tab"][aria-selected="true"],
+div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"],
+div[data-testid="stTabs"] [data-baseweb="tab"][aria-selected="true"] {
     background: #DCE8F4 !important;
+    background-color: #DCE8F4 !important;
     color: #164A7B !important;
     border-color: #B9CCDF !important;
-    box-shadow: inset 0 -3px 0 #164A7B;
+    box-shadow: inset 0 -3px 0 #164A7B !important;
 }
+
+/* Keep the tab content panel clean and coordinated */
 div[data-testid="stTabs"] div[role="tabpanel"] {
     background: #F7F9FC;
     border: 1px solid #E1E8EF;
