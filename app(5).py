@@ -336,6 +336,8 @@ with tab_cohort:
         - **Sepsis:** 2,788 (11.0%) children progressed to sepsis(8.0 [3.0-24.0] months; 1763 [63.2%] male)
         - **Infection only:** 22,638 (89.0%) children remained non-septic (11.0 [5.0-31.0] months; 14,036 [62.0%] male)
 
+        **All data used in the model development process** were features measured **within 24 hours of admission**.
+
         Ten candidate machine-learning algorithms were compared, and
         **XGBoost** was selected for the final model. CMU-iPedSep uses
         routinely available admission indicators to estimate the risk
