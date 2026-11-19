@@ -348,26 +348,46 @@ with tab_sepsis:
             )
 
 with tab_cohort:
-    st.markdown(
-        """
-        **Development cohort**
+    # Model development cohort: image on the left and explanatory text on the right.
+    with st.container(border=True):
+        cohort_image_col, cohort_text_col = st.columns(
+            [1, 1.5], gap="large", vertical_alignment="center"
+        )
 
-        The model was developed using a retrospective cohort of **25,426
-        children admitted with acute infection** to the Children's Hospital of Chongqing Medical University, National Clinical
-        Research Center for Children and Adolescents' Health and Diseases
-        in China between **2012 and 2025**.
+        with cohort_image_col:
+            cohort_image_path = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                "design.png"
+            )
+            if os.path.exists(cohort_image_path):
+                st.image(
+                    cohort_image_path,
+                    use_container_width=True
+                )
+            else:
+                st.warning("Image file not found: design.png")
 
-        - **Sepsis:** 2,788 (11.0%) children progressed to sepsis(8.0 [3.0-24.0] months; 1763 [63.2%] male)
-        - **Infection only:** 22,638 (89.0%) children remained non-septic (11.0 [5.0-31.0] months; 14,036 [62.0%] male)
+        with cohort_text_col:
+            st.markdown(
+                """
+                **Development cohort**
 
-        **All data used in the model development process** were features measured **within 24 hours of admission**.
+                The model was developed using a retrospective cohort of **25,426
+                children admitted with acute infection** to the Children's Hospital of Chongqing Medical University, National Clinical
+                Research Center for Children and Adolescents' Health and Diseases
+                in China between **2012 and 2025**.
 
-        Ten candidate machine-learning algorithms were compared, and
-        **XGBoost** was selected for the final model. CMU-iPedSep uses
-        routinely available admission indicators to estimate the risk
-        of sepsis in children admitted for acute infection.
-        """
-    )
+                - **Sepsis:** 2,788 (11.0%) children progressed to sepsis(8.0 [3.0-24.0] months; 1763 [63.2%] male)
+                - **Infection only:** 22,638 (89.0%) children remained non-septic (11.0 [5.0-31.0] months; 14,036 [62.0%] male)
+
+                **All data used in the model development process** were features measured **within 24 hours of admission**.
+
+                Ten candidate machine-learning algorithms were compared, and
+                **XGBoost** was selected for the final model. CMU-iPedSep uses
+                routinely available admission indicators to estimate the risk
+                of sepsis in children admitted for acute infection.
+                """
+            )
 
 
 with tab_developers:
