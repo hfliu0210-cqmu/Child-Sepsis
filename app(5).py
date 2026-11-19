@@ -314,7 +314,7 @@ with tab_sepsis:
     # Sepsis definition: image on the left and explanatory text on the right.
     with st.container(border=True):
         sepsis_image_col, sepsis_text_col = st.columns(
-            [1, 1], gap="large", vertical_alignment="center"
+            [1, 1.3], gap="large", vertical_alignment="center"
         )
 
         with sepsis_image_col:
@@ -323,10 +323,10 @@ with tab_sepsis:
                 "map.png"
             )
             if os.path.exists(sepsis_map_path):
-            st.image(
-    sepsis_map_path,
-    use_container_width=True
-)
+                st.image(
+                    sepsis_map_path,
+                    use_container_width=True
+                )
             else:
                 st.warning("Image file not found: map.png")
 
@@ -338,8 +338,8 @@ with tab_sepsis:
                 (according to the *Surviving Sepsis Campaign International Guidelines
                 for the Management of Sepsis and Septic Shock in Children 2026*,
                 *Pediatric Critical Care Medicine*).
-                
-                 **Sepsis** represents a poorly understood cause of **preventable mortality and health loss** globally in children.
+
+                **Sepsis** represents a poorly understood cause of **preventable mortality and health loss** globally in children.
 
                 For CMU-iPedSep, sepsis status is determined according to the
                 operational definition and outcome-labeling criteria used in the
