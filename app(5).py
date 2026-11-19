@@ -338,10 +338,8 @@ with tab_sepsis:
                 (according to the *Surviving Sepsis Campaign International Guidelines
                 for the Management of Sepsis and Septic Shock in Children 2026*,
                 *Pediatric Critical Care Medicine*).
-
-                **Sepsis** represents a
-poorly understood cause of **preventable mortality and
-health loss** globally in children.
+                
+                 **Sepsis** represents a poorly understood cause of **preventable mortality and health loss** globally in children.
 
                 For CMU-iPedSep, sepsis status is determined according to the
                 operational definition and outcome-labeling criteria used in the
