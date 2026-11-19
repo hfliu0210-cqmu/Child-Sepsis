@@ -314,7 +314,7 @@ with tab_sepsis:
     # Sepsis definition: image on the left and explanatory text on the right.
     with st.container(border=True):
         sepsis_image_col, sepsis_text_col = st.columns(
-            [1, 1.3], gap="large", vertical_alignment="center"
+            [1, 1.5], gap="large", vertical_alignment="center"
         )
 
         with sepsis_image_col:
@@ -351,7 +351,7 @@ with tab_cohort:
     # Model development cohort: image on the left and explanatory text on the right.
     with st.container(border=True):
         cohort_image_col, cohort_text_col = st.columns(
-            [1, 1.5], gap="large", vertical_alignment="center"
+            [1, 1.7], gap="large", vertical_alignment="center"
         )
 
         with cohort_image_col:
@@ -418,7 +418,7 @@ with tab_developers:
         col_photo, col_text = st.columns([1, 5], gap="medium")
         with col_photo:
             if os.path.exists(dev["photo"]):
-                st.image(dev["photo"], width=130)
+                st.image(dev["photo"], width=120)
             else:
                 st.info("Photo not found")
         with col_text:
