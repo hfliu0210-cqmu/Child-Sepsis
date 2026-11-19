@@ -323,10 +323,21 @@ with tab_sepsis:
                 "map.png"
             )
             if os.path.exists(sepsis_map_path):
-                st.image(
-                    sepsis_map_path,
-                    use_container_width=True
-                )
+               from PIL import Image
+
+img = Image.open(sepsis_map_path)
+
+target_height = 300  # 在这里调整图片高度，单位：px
+
+ratio = target_height / img.height
+new_width = int(img.width * ratio)
+
+img = img.resize(
+    (new_width, target_height),
+    Image.Resampling.LANCZOS
+)
+
+st.image(img, width=new_width)
             else:
                 st.warning("Image file not found: map.png")
 
