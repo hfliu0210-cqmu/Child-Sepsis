@@ -311,17 +311,39 @@ tab_sepsis, tab_cohort, tab_developers = st.tabs([
 ])
 
 with tab_sepsis:
-    st.markdown(
-        """
-        **Sepsis** is a life-threatening condition characterized by
-        organ dysfunction resulting from a dysregulated host response to infection (according to
-        Surviving Sepsis Campaign International Guidelines for the Management of Sepsis and Septic Shock in Children 2026. Pediatr Crit Care Med.).
+    # Sepsis definition: image on the left and explanatory text on the right.
+    with st.container(border=True):
+        sepsis_image_col, sepsis_text_col = st.columns(
+            [1, 1], gap="large", vertical_alignment="center"
+        )
 
-        For CMU-iPedSep, sepsis status is determined according to the
-        operational definition and outcome-labeling criteria used in the
-        original model development cohort.
-        """
-    )
+        with sepsis_image_col:
+            sepsis_map_path = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                "map.png"
+            )
+            if os.path.exists(sepsis_map_path):
+                st.image(
+                    sepsis_map_path,
+                    use_container_width=True
+                )
+            else:
+                st.warning("Image file not found: map.png")
+
+        with sepsis_text_col:
+            st.markdown(
+                """
+                **Sepsis** is a life-threatening condition characterized by
+                organ dysfunction resulting from a dysregulated host response to infection
+                (according to the *Surviving Sepsis Campaign International Guidelines
+                for the Management of Sepsis and Septic Shock in Children 2026*,
+                *Pediatric Critical Care Medicine*).
+
+                For CMU-iPedSep, sepsis status is determined according to the
+                operational definition and outcome-labeling criteria used in the
+                original model development cohort.
+                """
+            )
 
 with tab_cohort:
     st.markdown(
